@@ -361,56 +361,69 @@
         font-size: 22px;
       }
 
-      @media (max-width: 480px) {
-        body {
-          padding: 10px;
-        }
-        #weatherApp {
-          width: 95%;
-          padding: 30px 20px;
-        }
-        .header h1 {
-          font-size: 22px;
-        }
-        .theme-toggle {
-          width: 35px;
-          height: 35px;
-          font-size: 16px;
-        }
-        .search input {
-          height: 45px;
-          padding: 8px 15px;
-          font-size: 14px;
-        }
-        .search button {
-          width: 60px;
-          height: 60px;
-        }
-        .weather-icon {
-          width: 100px;
-          height: 100px;
-        }
-        .temp {
-          font-size: 50px;
-        }
-        .city {
-          font-size: 28px;
-        }
-        .col p {
-          font-size: 16px;
-        }
-        .humidity,
-        .wind {
-          font-size: 20px;
-        }
-        .search-history {
-          max-height: 50px;
-        }
-        .history-chip {
-          font-size: 12px;
-          padding: 4px 8px;
-        }
-      }
+     /* Purane media query ko isse replace karein */
+@media (max-width: 480px){
+  body {
+    padding: 10px;
+    line-height: 1.5; /* Line height kam ki taaki space bache */
+  }
+
+  #weatherApp {
+    width: 95%;
+    padding: 20px 15px; /* Padding kam ki */
+    margin: 0 auto;
+  }
+
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .search {
+    gap: 5px; /* Button aur input ke beech gap */
+  }
+
+  .search input {
+    height: 45px;
+    font-size: 14px;
+    padding: 0 15px;
+  }
+
+  .search button {
+    width: 55px; /* Size chota kiya taaki screen se bahar na jaye */
+    height: 55px;
+    font-size: 10px; /* Text size chota kiya */
+    padding: 5px;
+    white-space: normal; /* Text ko wrap karne ke liye */
+    line-height: 1.2;
+  }
+
+  .weather-icon {
+    width: 80px;
+    height: 80px;
+  }
+
+  .temp {
+    font-size: 45px; /* Temperature font size kam kiya */
+    margin: 5px 0;
+  }
+
+  .city {
+    font-size: 24px;
+  }
+
+  .details {
+    margin-top: 20px;
+    flex-wrap: wrap; /* Agar jagah kam ho to niche shift ho jaye */
+  }
+
+  .col {
+    padding: 10px;
+  }
+
+  .humidity, .wind {
+    font-size: 18px;
+  }
+}
     </style>
   </head>
   <body>
@@ -523,3 +536,4 @@ themeToggle.addEventListener("click", () => {
     </script>
   </body>
 </html>
+
