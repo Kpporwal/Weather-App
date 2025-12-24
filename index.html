@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
     <style>
+      
       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
       :root {
@@ -361,101 +362,74 @@
         font-size: 22px;
       }
 
-     /* Purane media query ko isse replace karein */
+/* --- Mobile Specific Styles (Max width 480px) --- */
 @media (max-width: 480px) {
-  body {
-    padding: 8px;
-    line-height: 1.4;
-  }
+    #weatherApp {
+        width: 90% !important; /* Box ko screen ke andar rakhne ke liye */
+        max-width: 360px;
+        padding: 20px 15px;
+        margin: 20px auto;
+        display: block;
+    }
 
-  #weatherApp {
-    width: 100%;
-    max-width: 360px;
-    padding: 18px 15px;
-    margin: auto;
-    border-radius: 18px;
-  }
+    .search {
+        display: flex !important;
+        flex-direction: row; /* Input aur Button ek line mein rahenge */
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        width: 100%;
+    }
 
-  h1 {
-    font-size: 20px;
-    margin-bottom: 12px;
-  }
+    .search input {
+        flex: 1; /* Input jitni jagah bachi hai le lega */
+        min-width: 0; /* Overflow rokne ke liye zaroori hai */
+        height: 45px;
+        font-size: 14px;
+        padding: 0 10px;
+        border-radius: 25px;
+    }
 
-  /* 🔍 Search Section */
-  .search {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 15px;
-  }
+    .search button {
+        width: 90px !important; /* Button ki width limit kar di taaki bahar na nikle */
+        height: 45px;
+        font-size: 11px;
+        font-weight: bold;
+        padding: 5px;
+        white-space: normal; /* Text ko 2 lines mein wrap karega agar bada hai */
+        line-height: 1.2;
+        border-radius: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        flex-shrink: 0; /* Button ko pichakne se rokega */
+    }
 
-  .search input {
-    height: 44px;
-    font-size: 14px;
-    padding: 0 14px;
-    border-radius: 22px;
-  }
+    .temp {
+        font-size: 50px;
+        margin: 15px 0;
+    }
 
-  .search button {
-    width: 50px;
-    height: 50px;
-    font-size: 11px;
-    border-radius: 50%;
-    padding: 6px;
-    line-height: 1.1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+    .city {
+        font-size: 26px;
+    }
 
-  /* 🌤 Weather Icon */
-  #wIcon {
-    width: 80px;
-    height: 80px;
-    margin: 5px auto;
-  }
+    .details {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        margin-top: 25px;
+    }
 
-  /* 🌡 Temperature */
-  .temp {
-    font-size: 42px;
-    margin: 4px 0;
-    font-weight: 400;
-  }
+    .col {
+        text-align: center;
+    }
 
-  .city {
-    font-size: 24px;
-    margin-bottom: 2px;
-  }
-
-  .feels-like {
-    font-size: 14px;
-    margin-bottom: 10px;
-    opacity: 0.85;
-  }
-
-  /* 📊 Details */
-  .details {
-    display: flex;
-    gap: 10px;
-    margin-top: 18px;
-  }
-
-  .col {
-    background: rgba(255, 255, 255, 0.12);
-    border-radius: 12px;
-    padding: 10px 5px;
-    flex: 1;
-  }
-
-  .humidity,
-  .wind {
-    font-size: 18px;
-    font-weight: 600;
-  }
-
-  .col p:last-child {
-    font-size: 13px;
-    opacity: 0.8;
-  }
+    .col img {
+        width: 35px; /* Icons ka size chota kiya */
+    }
+}
 }
 
     </style>
@@ -570,5 +544,6 @@ themeToggle.addEventListener("click", () => {
     </script>
   </body>
 </html>
+
 
 
