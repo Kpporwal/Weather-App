@@ -362,68 +362,102 @@
       }
 
      /* Purane media query ko isse replace karein */
-@media (max-width: 480px){
+@media (max-width: 480px) {
   body {
-    padding: 10px;
-    line-height: 1.5; /* Line height kam ki taaki space bache */
+    padding: 8px;
+    line-height: 1.4;
   }
 
   #weatherApp {
-    width: 95%;
-    padding: 20px 15px; /* Padding kam ki */
-    margin: 0 auto;
+    width: 100%;
+    max-width: 360px;
+    padding: 18px 15px;
+    margin: auto;
+    border-radius: 18px;
   }
 
-  .header h1 {
+  h1 {
     font-size: 20px;
+    margin-bottom: 12px;
   }
 
+  /* 🔍 Search Section */
   .search {
-    gap: 5px; /* Button aur input ke beech gap */
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
   }
 
   .search input {
-    height: 45px;
+    height: 44px;
     font-size: 14px;
-    padding: 0 15px;
+    padding: 0 14px;
+    border-radius: 22px;
   }
 
   .search button {
-    width: 55px; /* Size chota kiya taaki screen se bahar na jaye */
-    height: 55px;
-    font-size: 10px; /* Text size chota kiya */
-    padding: 5px;
-    white-space: normal; /* Text ko wrap karne ke liye */
-    line-height: 1.2;
+    width: 50px;
+    height: 50px;
+    font-size: 11px;
+    border-radius: 50%;
+    padding: 6px;
+    line-height: 1.1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .weather-icon {
+  /* 🌤 Weather Icon */
+  #wIcon {
     width: 80px;
     height: 80px;
+    margin: 5px auto;
   }
 
+  /* 🌡 Temperature */
   .temp {
-    font-size: 45px; /* Temperature font size kam kiya */
-    margin: 5px 0;
+    font-size: 42px;
+    margin: 4px 0;
+    font-weight: 400;
   }
 
   .city {
     font-size: 24px;
+    margin-bottom: 2px;
   }
 
+  .feels-like {
+    font-size: 14px;
+    margin-bottom: 10px;
+    opacity: 0.85;
+  }
+
+  /* 📊 Details */
   .details {
-    margin-top: 20px;
-    flex-wrap: wrap; /* Agar jagah kam ho to niche shift ho jaye */
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
   }
 
   .col {
-    padding: 10px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 10px 5px;
+    flex: 1;
   }
 
-  .humidity, .wind {
+  .humidity,
+  .wind {
     font-size: 18px;
+    font-weight: 600;
+  }
+
+  .col p:last-child {
+    font-size: 13px;
+    opacity: 0.8;
   }
 }
+
     </style>
   </head>
   <body>
@@ -536,4 +570,5 @@ themeToggle.addEventListener("click", () => {
     </script>
   </body>
 </html>
+
 
