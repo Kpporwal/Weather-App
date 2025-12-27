@@ -69,7 +69,7 @@
       }
 
       body.rain {
-        background: linear-gradient(135deg, #4a5568, #2d3748);
+        background: linear-gradient(135deg, #3a7bd5,#00d2ff);
         position: relative;
         overflow: hidden;
       }
@@ -98,10 +98,10 @@
         }
       }
       body.clouds {
-        background: linear-gradient(135deg, #e2e8f0, #cbd5e0);
+        background: linear-gradient(135deg, #57606f, #2f3542);
       }
       body.clear {
-        background: linear-gradient(135deg, #fbbf24, #f59e0b);
+        background: linear-gradient(135deg, #f7b733, #fc4a1a);
       }
       body.snow {
         background: linear-gradient(135deg, #f7fafc, #edf2f7);
@@ -159,7 +159,7 @@
       }
 
       #weatherApp {
-        background: var(--glass-bg);
+        background: rgba(255,255,255,0.15);
         backdrop-filter: blur(20px);
         border: 1px solid var(--glass-border);
         width: 90%;
@@ -430,7 +430,7 @@
         width: 35px; /* Icons ka size chota kiya */
     }
 }
-}
+
 
     </style>
   </head>
@@ -481,9 +481,9 @@
       </div>
     </div>
 
-    <script>
+   <script>
       const apiKey = "0546e6b902928fa04b059f050a029f2f";
-const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+      const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 
 const searchBox = document.querySelector(".search input");
 const searchBtn = document.querySelector(".search button");
@@ -491,14 +491,15 @@ const themeToggle = document.getElementById("themeToggle");
 
 async function checkWeather(city) {
     if (!city.trim()) {
-        alert("Please enter a city name!");
+        alert("Please enter a city or village name!");
         return;
     }
 
-    const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+    // BADLAV YAHAN HAI: city ke saath ",IN" add kiya hai taaki India ke results pehle aayein
+    const response = await fetch(apiUrl + city + `,IN&appid=${apiKey}`);
 
     if (response.status == 404) {
-        alert("Incorrect city name!");
+        alert("Location not found! Try searching with 'Village, District' format.");
     } else {
         var data = await response.json();
 
@@ -541,7 +542,7 @@ themeToggle.addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
     themeToggle.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
 });
-    </script>
+</script>
   </body>
 </html>
 
