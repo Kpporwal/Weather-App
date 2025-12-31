@@ -122,48 +122,78 @@
         margin-top: 30px;
       }
 
-      /* --- Mobile Specific Styles --- */
+      /* --- Final Perfect Mobile UI (Max 480px) --- */
       @media (max-width: 480px) {
         #weatherApp {
           width: 92% !important;
           max-width: 360px;
-          height: 550px; /* Portrait */
-          padding: 30px 20px;
+          height: 620px; /* Thodi aur height di hai taaki sab kuch khula-khula dikhe */
+          padding: 25px 20px;
           margin: 20px auto;
 
           display: flex !important;
           flex-direction: column;
           justify-content: space-between;
           align-items: center;
-          border-radius: 30px;
-          overflow: hidden;
+
+          /* Glassmorphism Effect */
+          background: rgba(255, 255, 255, 0.15);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          border-radius: 40px;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+          box-sizing: border-box;
         }
 
-        .search {
-          display: flex !important;
+        /* Header: Icons ko dur karne ke liye */
+        .header {
           width: 100%;
-          gap: 8px;
-          margin-bottom: 20px;
+          display: flex !important;
+          justify-content: space-between; /* Moon left, Location right, Text center */
+          align-items: center;
+          padding: 0 10px;
+          margin-bottom: 15px;
+        }
+
+        .header h2 {
+          font-size: 18px;
+          font-weight: 500;
+          color: #fff;
+          margin: 0;
+        }
+
+        /* Search Bar Layout */
+        .search {
+          width: 100%;
+          display: flex !important;
+          gap: 0;
+          margin-bottom: 10px;
         }
 
         .search input {
           flex: 1;
           height: 48px;
-          border-radius: 25px;
-          font-size: 14px;
+          border-radius: 25px 0 0 25px; /* Left round */
+          border: none;
           padding: 0 15px;
-          min-width: 0;
+          font-size: 15px;
+          outline: none;
+          background: rgba(255, 255, 255, 0.95);
         }
 
         .search button {
-          width: 85px;
+          width: 80px;
           height: 48px;
-          border-radius: 25px;
-          font-size: 13px;
-          flex-shrink: 0;
+          border-radius: 0 25px 25px 0; /* Right round */
+          border: none;
+          background: #3c81e7;
+          color: white;
+          font-weight: bold;
+          cursor: pointer;
         }
 
-        /* (City, Temp) */
+        /* Weather Content Section */
         .weather {
           text-align: center;
           flex: 1;
@@ -173,38 +203,54 @@
         }
 
         .city {
-          font-size: 32px;
-          margin-bottom: 5px;
+          font-size: 34px;
+          font-weight: 500;
+          color: #fff;
+          margin-top: 10px;
         }
 
         .temp {
-          font-size: 70px;
-          font-weight: 500;
-          margin: 10px 0;
+          font-size: 85px;
+          font-weight: 300;
+          color: #fff;
+          margin: 5px 0;
         }
 
         .feels-like {
           font-size: 14px;
-          opacity: 0.8;
+          color: rgba(255, 255, 255, 0.8);
         }
 
-        /* (Humidity, Wind) */
+        /* Humidity & Wind Section (Sabse niche) */
         .details {
+          width: 100%;
           display: flex;
           justify-content: space-around;
-          width: 100%;
-          margin-top: auto;
-          padding-top: 20px;
-          border-top: 1px solid rgba(255, 255, 255, 0.15);
+          padding-top: 25px;
+          border-top: 1px solid rgba(255, 255, 255, 0.2);
+          margin-top: 15px;
         }
 
         .col {
           text-align: center;
+          color: #fff;
+        }
+
+        .col img {
+          width: 28px;
+          margin-bottom: 8px;
         }
 
         .col p {
-          font-size: 14px;
+          font-size: 13px;
           margin: 0;
+          opacity: 0.8;
+        }
+
+        .col strong {
+          font-size: 16px;
+          display: block;
+          margin-top: 2px;
         }
       }
       /* --- Tablet Specific Styles (768px to 1024px) --- */
