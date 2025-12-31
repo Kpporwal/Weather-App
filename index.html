@@ -3,8 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather App</title>
-
+    <title>Modern Weather App</title>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
@@ -40,86 +39,120 @@
         background: var(--bg-primary);
         color: var(--text-primary);
         min-height: 100vh;
-        line-height: 2.5;
+        line-height: 1.6;
         transition: 0.4s;
         display: flex;
         justify-content: center;
         align-items: center;
+        padding: 20px;
       }
 
       #weatherApp {
         background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(20px);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
         border: 1px solid var(--glass-border);
-        width: 90%;
-        max-width: 400px;
-        padding: 40px 30px;
-        border-radius: 20px;
+        width: 100%;
+        max-width: 550px;
+        padding: 60px 45px;
+        border-radius: 40px;
+        position: relative;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
       }
 
       .header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 20px;
+        margin-bottom: 35px;
       }
 
-      .gps-btn {
+      /*  GPS and Theme Buttons */
+      .gps-btn,
+      .theme-btn {
         background: var(--bg-secondary);
         border: none;
         border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        font-size: 18px;
+        width: 50px;
+        height: 50px;
+        font-size: 22px;
         color: white;
+        cursor: pointer;
+        transition: 0.3s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .gps-btn:hover,
+      .theme-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.1);
       }
 
       .search {
         display: flex;
-        gap: 10px;
+        gap: 15px;
         width: 100%;
+        margin-bottom: 40px;
       }
 
       .search input {
         flex: 1;
-        min-width: 0;
-        height: 50px;
-        padding: 0 20px;
+        height: 60px;
+        padding: 0 25px;
         border-radius: 30px;
         border: none;
-        font-size: 16px;
+        font-size: 18px;
         background: var(--input-bg);
         color: var(--input-text);
+        outline: none;
+        line-height: normal;
       }
 
       .search button {
-        width: 70px;
-        height: 50px;
-        border-radius: 25px;
+        width: 100px;
+        height: 60px;
+        border-radius: 30px;
         border: none;
-        font-weight: bold;
+        font-weight: 600;
         background: var(--button-bg);
         color: var(--button-text);
-        flex-shrink: 0;
+        cursor: pointer;
+        transition: 0.3s;
       }
 
       .weather {
         text-align: center;
-        margin-top: 30px;
       }
 
       .temp {
-        font-size: 60px;
+        font-size: 90px;
+        font-weight: 500;
+        margin: 10px 0;
       }
 
       .city {
-        font-size: 35px;
+        font-size: 48px;
+        margin-bottom: 5px;
       }
 
       .details {
         display: flex;
-        justify-content: space-around;
-        margin-top: 30px;
+        justify-content: space-between;
+        margin-top: 50px;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .details div {
+        text-align: center;
+      }
+
+      .humidity,
+      .wind {
+        font-size: 24px;
+        font-weight: 600;
       }
 
       /* --- Perfect Mobile UI --- */
@@ -210,10 +243,10 @@
         /* Humidity & Wind */
         .details {
           width: 100%;
-          margin-top: auto;
           display: flex !important;
           justify-content: space-between;
-          padding-top: 15px;
+          padding: 20px 15px 0 15px;
+          margin-top: auto;
           border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
@@ -296,17 +329,22 @@
       }
     </style>
   </head>
-
   <body>
     <div id="weatherApp">
       <div class="header">
-        <div id="themeToggle" style="font-size: 20px; cursor: pointer">🌙</div>
-        <h1 style="font-size: 20px">Weather App</h1>
+        <button class="theme-btn" id="themeToggle">🌙</button>
+        <h1 style="font-size: 24px">Weather App</h1>
         <button class="gps-btn" id="gpsBtn">📍</button>
       </div>
 
       <div class="search">
-        <input id="cityInput" placeholder="Enter city name" />
+        <input
+          type="text"
+          id="cityInput"
+          placeholder="Enter city name"
+          spellcheck="false"
+          autocomplete="off"
+        />
         <button id="getWeatherBtn">Search</button>
       </div>
 
@@ -314,7 +352,6 @@
         <h2 class="city">Search a City</h2>
         <h1 class="temp">--°C</h1>
         <p class="feels-like">Feels like: --°C</p>
-
         <div class="details">
           <div>
             <p class="humidity">--%</p>
@@ -331,10 +368,10 @@
     <script>
       const apiKey = "0546e6b902928fa04b059f050a029f2f";
       const apiUrl =
-        "https://api.openweathermap.org/data/2.5/weather?units=metric&";
+        "https://api.openweathermap.org/data/2.5/weather?units=metric";
 
-      const searchBox = document.querySelector(".search input");
-      const searchBtn = document.querySelector(".search button");
+      const searchBox = document.getElementById("cityInput");
+      const searchBtn = document.getElementById("getWeatherBtn");
       const gpsBtn = document.getElementById("gpsBtn");
 
       function updateWeatherUI(data) {
@@ -349,27 +386,43 @@
       }
 
       async function checkWeather(city) {
-        const response = await fetch(apiUrl + `q=${city},IN&appid=${apiKey}`);
-        if (response.status === 404) return alert("City not found!");
-        updateWeatherUI(await response.json());
+        if (!city) return;
+        try {
+          const response = await fetch(`${apiUrl}&q=${city}&appid=${apiKey}`);
+          if (response.status === 404) return alert("City not found!");
+          updateWeatherUI(await response.json());
+        } catch (err) {
+          alert("Check your connection!");
+        }
       }
 
       searchBtn.onclick = () => checkWeather(searchBox.value);
-      searchBox.onkeypress = (e) =>
-        e.key === "Enter" && checkWeather(searchBox.value);
+      searchBox.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") checkWeather(searchBox.value);
+      });
 
       gpsBtn.onclick = () => {
-        navigator.geolocation.getCurrentPosition(async (pos) => {
-          const { latitude, longitude } = pos.coords;
-          const res = await fetch(
-            apiUrl + `lat=${latitude}&lon=${longitude}&appid=${apiKey}`
-          );
-          updateWeatherUI(await res.json());
-        });
+        navigator.geolocation.getCurrentPosition(
+          async (pos) => {
+            const { latitude, longitude } = pos.coords;
+            const res = await fetch(
+              `${apiUrl}&lat=${latitude}&lon=${longitude}&appid=${apiKey}`
+            );
+            updateWeatherUI(await res.json());
+          },
+          () => alert("Location access denied!")
+        );
       };
 
-      document.getElementById("themeToggle").onclick = () =>
+      // Dark mode toggle functionality
+      document.getElementById("themeToggle").onclick = () => {
         document.body.classList.toggle("dark-mode");
+        const btn = document.getElementById("themeToggle");
+        // Icon swap logic (Optional)
+        btn.innerHTML = document.body.classList.contains("dark-mode")
+          ? "☀️"
+          : "🌙";
+      };
     </script>
   </body>
 </html>
