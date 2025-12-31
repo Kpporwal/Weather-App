@@ -158,111 +158,109 @@
       /* --- Perfect Mobile UI --- */
 
       @media (max-width: 480px) {
-        #weatherApp {
-          width: 90% !important;
-          max-width: 350px;
-          height: auto !important;
-          min-height: 520px;
-          padding: 25px 20px;
-          margin: 20px auto;
-
-          display: flex !important;
-          flex-direction: column;
+        body {
+          padding: 10px;
           justify-content: flex-start;
-          align-items: center;
-          gap: 12px;
-
-          background: rgba(255, 255, 255, 0.15);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          border-radius: 40px;
-          box-sizing: border-box;
-          overflow: hidden;
         }
 
-        /* Header Spacing Fix */
+        #weatherApp {
+          width: 100%;
+          max-width: 360px;
+          min-height: 520px;
+          padding: 20px 18px;
+          border-radius: 30px;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+
+        /* Header */
         .header {
           width: 100%;
-          display: flex !important;
-          justify-content: space-between;
-          align-items: center;
-          padding: 0 5px;
-          margin-bottom: 5px;
+          margin-bottom: 8px;
         }
 
-        /* Search Bar Layout */
+        .header h1 {
+          font-size: 18px;
+        }
+
+        .gps-btn,
+        .theme-btn {
+          width: 42px;
+          height: 42px;
+          font-size: 18px;
+        }
+
+        /* Search Bar */
         .search {
           width: 100%;
-          display: flex !important;
-          gap: 0;
-          margin-bottom: 10px;
+          display: flex;
+          margin-bottom: 15px;
         }
 
         .search input {
-          flex: 1;
-          height: 45px;
-          border-radius: 25px 0 0 25px;
-          border: none;
-          padding-left: 15px;
-          outline: none;
+          height: 42px;
+          font-size: 15px;
+          padding: 0 12px;
+          border-radius: 22px 0 0 22px;
         }
 
         .search button {
-          width: 80px;
-          height: 45px;
-          border-radius: 0 25px 25px 0;
-          border: none;
-          background: #3c81e7;
-          color: white;
-          font-weight: bold;
+          width: 75px;
+          height: 42px;
+          font-size: 14px;
+          border-radius: 0 22px 22px 0;
         }
 
-        /* Weather Content  */
+        /* Weather Info */
         .weather {
-          text-align: center;
-          margin: 10px 0;
+          flex: 1;
+          margin-top: 10px !important;
           display: flex;
           flex-direction: column;
-          align-items: center;
+          justify-content: center;
+          text-align: center;
         }
 
         .city {
-          font-size: 30px;
-          margin: 0;
-          color: #fff;
+          font-size: 26px;
+          margin-bottom: 5px;
         }
 
         .temp {
-          font-size: 70px;
-          font-weight: 300;
+          font-size: 64px;
+          font-weight: 400;
           margin: 5px 0;
-          color: #fff;
         }
 
-        /* Humidity & Wind */
+        .feels-like {
+          font-size: 14px;
+          opacity: 0.9;
+        }
+
+        /* Bottom Details */
         .details {
           width: 100%;
-          display: flex !important;
+          margin-top: 25px;
+          padding-top: 15px;
+          display: flex;
           justify-content: space-between;
-          padding: 20px 15px 0 15px;
-          margin-top: auto;
-          border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .col {
-          text-align: center;
-          color: #fff;
+        .details div {
+          width: 50%;
         }
 
-        .col p {
+        .humidity,
+        .wind {
+          font-size: 18px;
+          font-weight: 600;
+        }
+
+        .details p:last-child {
           font-size: 13px;
-          margin: 0;
-        }
-
-        .col strong {
-          font-size: 16px;
-          display: block;
+          opacity: 0.85;
         }
       }
       /* --- Tablet Specific Styles (768px to 1024px) --- */
@@ -332,7 +330,7 @@
   <body>
     <div id="weatherApp">
       <div class="header">
-        <button class="theme-btn" id="themeToggle">🌙</button>
+        <button class="theme-btn" id="themeToggle">🌗</button>
         <h1 style="font-size: 24px">Weather App</h1>
         <button class="gps-btn" id="gpsBtn">📍</button>
       </div>
@@ -420,8 +418,8 @@
         const btn = document.getElementById("themeToggle");
         // Icon swap logic (Optional)
         btn.innerHTML = document.body.classList.contains("dark-mode")
-          ? "☀️"
-          : "🌙";
+          ? "🌓"
+          : "🌗";
       };
     </script>
   </body>
