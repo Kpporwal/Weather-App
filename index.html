@@ -168,11 +168,13 @@
           max-width: 360px;
           min-height: 520px;
           padding: 20px 18px;
-          border-radius: 30px;
+          margin: 20px auto;
 
           display: flex;
           flex-direction: column;
           justify-content: space-between;
+
+          border-radius: 30px;
         }
 
         /* Header */
@@ -192,14 +194,16 @@
           font-size: 18px;
         }
 
-        /* Search Bar */
         .search {
           width: 100%;
           display: flex;
           margin-bottom: 15px;
+          overflow: hidden;
         }
 
         .search input {
+          flex: 1;
+          min-width: 0;
           height: 42px;
           font-size: 15px;
           padding: 0 12px;
@@ -207,10 +211,11 @@
         }
 
         .search button {
-          width: 75px;
+          width: 80px;
           height: 42px;
           font-size: 14px;
           border-radius: 0 22px 22px 0;
+          white-space: nowrap;
         }
 
         /* Weather Info */
