@@ -1,8 +1,8 @@
-# 🌦️ Professional Glassmorphism Weather App (v2.0)
+# 🌦️ Modern Weather App with Voice Search:(v2.0)
 
 ![GitHub Clones](https://img.shields.io/badge/clones-85-green) ![GitHub Stars](https://img.shields.io/github/stars/Kpporwal/Weather-App?style=social)
 
-A premium, large-scale Weather Application featuring a modern **Glassmorphism UI**. This version is specifically optimized for both desktop and mobile, offering a seamless user experience with real-time data fetching.
+A sleek, responsive Weather Application built with OpenWeatherMap API. It features a modern Glassmorphism UI, real-time data fetching, and an intuitive Voice Search capability.
 
 ## 🚀 Live Demo
 
@@ -15,17 +15,24 @@ Experience the app live:
 
 ## ✨ Key Features (Updated)
 
-- **Extra Large UI**: Optimized container size (550px) for a bold desktop presence.
-- **Smart Theme Toggle**: Switch between Light and Dark mode with a dynamic icon (🌙/☀️).
-- **Geolocation Support**: Get instant weather for your current location with one click on 📍.
-- **Refined Search**: Enhanced input field with fixed line-height for a smooth typing experience on all browsers.
-- **Glassmorphism 2.0**: High-quality backdrop-blur and semi-transparent borders for a premium feel.
+Real-time Weather Data: Get accurate temperature, humidity, and wind speed for any city globally.
 
-## 🛠️ Technical Improvements
+🎙️ Smart Voice Search: Integrated Web Speech API that allows users to search by voice. Includes custom logic to automatically remove trailing periods (dots) for error-free API calls.
 
-- **CSS3 Variables**: Managed themes using `:root` variables for easy maintenance.
-- **Flexbox Layout**: Perfectly balanced header and details section for all screen sizes.
-- **Error Handling**: Included alerts for "City Not Found" and "Location Access Denied."
+📍 Geolocation Support: One-tap access to local weather using the browser's GPS.
+
+🌗 Dynamic Dark Mode: Seamlessly toggle between Light and Dark themes.
+
+📱 Mobile-First Design: Fully responsive layout for Mobile, Tablet, and Desktop.
+
+    Glassmorphism UI: High-quality aesthetic using backdrop filters and blur effects.
+
+## 🛠️ Tech Stack
+
+Frontend: HTML5, CSS3 (Flexbox, CSS Variables), JavaScript (ES6+)
+Icons: Google Material Symbols & Emojis
+API: OpenWeatherMap API
+Voice Engine: Web Speech Recognition API
 
 ## 📈 Recent Activity
 

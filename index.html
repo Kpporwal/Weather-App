@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Modern Weather App</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
@@ -67,7 +71,6 @@
         margin-bottom: 35px;
       }
 
-      /*  GPS and Theme Buttons */
       .gps-btn,
       .theme-btn {
         background: var(--bg-secondary);
@@ -97,10 +100,18 @@
         margin-bottom: 40px;
       }
 
-      .search input {
+      /* Wrapper for input and mic */
+      .input-wrapper {
+        position: relative;
         flex: 1;
+        display: flex;
+        align-items: center;
+      }
+
+      .search input {
+        width: 100%;
         height: 60px;
-        padding: 0 25px;
+        padding: 0 50px 0 25px; /* Right padding for mic */
         border-radius: 30px;
         border: none;
         font-size: 18px;
@@ -108,6 +119,20 @@
         color: var(--input-text);
         outline: none;
         line-height: normal;
+      }
+
+      /* Mic icon styling */
+      .mic-btn {
+        position: absolute;
+        right: 15px;
+        cursor: pointer;
+        color: #555;
+        font-size: 24px;
+        transition: 0.3s;
+      }
+
+      .dark-mode .mic-btn {
+        color: #e0e0e0;
       }
 
       .search button {
@@ -156,7 +181,6 @@
       }
 
       /* --- Perfect Mobile UI --- */
-
       @media (max-width: 480px) {
         body {
           padding: 10px;
@@ -169,165 +193,49 @@
           min-height: 520px;
           padding: 20px 18px;
           margin: 20px auto;
-
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-
-          border-radius: 30px;
-        }
-
-        /* Header */
-        .header {
-          width: 100%;
-          margin-bottom: 8px;
         }
 
         .header h1 {
           font-size: 18px;
         }
 
-        .gps-btn,
-        .theme-btn {
-          width: 42px;
-          height: 42px;
-          font-size: 18px;
-        }
-
         .search {
-          width: 100%;
-          display: flex;
+          gap: 8px;
           margin-bottom: 15px;
-          overflow: hidden;
         }
 
         .search input {
-          flex: 1;
-          min-width: 0;
           height: 42px;
           font-size: 15px;
-          padding: 0 12px;
+          padding: 0 35px 0 15px; /* Adjusted for mobile */
           border-radius: 22px 0 0 22px;
         }
 
+        .mic-btn {
+          right: 10px;
+          font-size: 20px;
+        }
+
         .search button {
-          width: 80px;
+          width: 72px;
           height: 42px;
           font-size: 14px;
           border-radius: 0 22px 22px 0;
-          white-space: nowrap;
-        }
-
-        /* Weather Info */
-        .weather {
-          flex: 1;
-          margin-top: 10px !important;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          text-align: center;
         }
 
         .city {
           font-size: 26px;
-          margin-bottom: 5px;
         }
-
         .temp {
           font-size: 64px;
-          font-weight: 400;
-          margin: 5px 0;
         }
-
-        .feels-like {
-          font-size: 14px;
-          opacity: 0.9;
-        }
-
-        /* Bottom Details */
         .details {
-          width: 100%;
           margin-top: 25px;
           padding-top: 15px;
-          display: flex;
-          justify-content: space-between;
         }
-
-        .details div {
-          width: 50%;
-        }
-
         .humidity,
         .wind {
           font-size: 18px;
-          font-weight: 600;
-        }
-
-        .details p:last-child {
-          font-size: 13px;
-          opacity: 0.85;
-        }
-      }
-      /* --- Tablet Specific Styles (768px to 1024px) --- */
-
-      @media (min-width: 768px) and (max-width: 1024px) {
-        #weatherApp {
-          width: 60% !important;
-          max-width: 500px;
-          height: 700px;
-          padding: 50px 30px;
-          margin: 40px auto;
-
-          display: flex !important;
-          flex-direction: column;
-          justify-content: space-between;
-          align-items: center;
-
-          /* glass effect */
-
-          background: rgba(255, 255, 255, 0.1);
-          backdrop-filter: blur(20px);
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          border-radius: 50px;
-        }
-
-        .search {
-          width: 90%;
-          gap: 10px;
-        }
-
-        .search input {
-          height: 55px;
-          font-size: 18px;
-        }
-
-        .search button {
-          width: 110px;
-          height: 55px;
-          font-size: 16px;
-        }
-
-        .city {
-          font-size: 45px;
-        }
-
-        .temp {
-          font-size: 100px;
-          font-weight: 300;
-        }
-
-        .details {
-          width: 100%;
-          padding-top: 30px;
-          border-top: 2px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .col p {
-          font-size: 18px;
-        }
-
-        .col img {
-          width: 50px;
         }
       }
     </style>
@@ -341,13 +249,16 @@
       </div>
 
       <div class="search">
-        <input
-          type="text"
-          id="cityInput"
-          placeholder="Enter city name"
-          spellcheck="false"
-          autocomplete="off"
-        />
+        <div class="input-wrapper">
+          <input
+            type="text"
+            id="cityInput"
+            placeholder="Enter city name"
+            spellcheck="false"
+            autocomplete="off"
+          />
+          <span class="material-symbols-outlined mic-btn" id="micBtn">mic</span>
+        </div>
         <button id="getWeatherBtn">Search</button>
       </div>
 
@@ -376,6 +287,7 @@
       const searchBox = document.getElementById("cityInput");
       const searchBtn = document.getElementById("getWeatherBtn");
       const gpsBtn = document.getElementById("gpsBtn");
+      const micBtn = document.getElementById("micBtn");
 
       function updateWeatherUI(data) {
         document.querySelector(".city").innerHTML = data.name;
@@ -404,6 +316,32 @@
         if (e.key === "Enter") checkWeather(searchBox.value);
       });
 
+      // Voice Recognition Logic
+      micBtn.onclick = () => {
+        const recognition = new (window.SpeechRecognition ||
+          window.webkitSpeechRecognition)();
+        recognition.lang = "en-US";
+        micBtn.style.color = "#ff4b2b";
+
+        recognition.start();
+
+        recognition.onresult = (event) => {
+          let transcript = event.results[0][0].transcript;
+
+          // Yahan change kiya hai: trim() aur replace() lagaya hai
+          transcript = transcript.trim().replace(/\.$/, "");
+
+          searchBox.value = transcript;
+          checkWeather(transcript);
+          micBtn.style.color = "";
+        };
+
+        recognition.onerror = () => {
+          micBtn.style.color = "";
+          alert("Voice search failed!");
+        };
+      };
+
       gpsBtn.onclick = () => {
         navigator.geolocation.getCurrentPosition(
           async (pos) => {
@@ -417,11 +355,9 @@
         );
       };
 
-      // Dark mode toggle functionality
       document.getElementById("themeToggle").onclick = () => {
         document.body.classList.toggle("dark-mode");
         const btn = document.getElementById("themeToggle");
-        // Icon swap logic (Optional)
         btn.innerHTML = document.body.classList.contains("dark-mode")
           ? "🌓"
           : "🌗";
