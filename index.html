@@ -207,7 +207,7 @@
         .search input {
           height: 42px;
           font-size: 15px;
-          padding: 0 35px 0 15px; /* Adjusted for mobile */
+          padding: 0 12px;
           border-radius: 22px 0 0 22px;
         }
 
@@ -221,6 +221,17 @@
           height: 42px;
           font-size: 14px;
           border-radius: 0 22px 22px 0;
+          white-space: nowrap;
+        }
+
+        /* Weather Info */
+        .weather {
+          flex: 1;
+          margin-top: 10px !important;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          text-align: center;
         }
 
         .city {
